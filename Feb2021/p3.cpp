@@ -26,10 +26,14 @@ int main() {
                 // find first column to right of i where the min is exactly 100
                 if (j <= i) {
                     j = i;
-                    while (j < n && minInCol[j] != 100)
+                    while (j < n && minInCol[j] > 100)
                         j++;
                 }
-                // find first column to right of i where the min is < 100
+                if (j < n && minInCol[j] < 100) {
+                    i = j;
+                    continue;
+                }
+                // find first column to right of j where the min is < 100
                 if (k <= j) {
                     k = j;
                     while (k < n && minInCol[k] >= 100)
