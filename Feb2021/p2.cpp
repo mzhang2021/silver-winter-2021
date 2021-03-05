@@ -25,7 +25,6 @@ int main() {
             answer += after - before;
             last = after;
         }
-        // since both conditions have (before > last), I could probably combine both into one if, but wanted to make logic more clear
     }
 
     // sorts the gaps in reverse order
