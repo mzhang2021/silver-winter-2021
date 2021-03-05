@@ -28,16 +28,19 @@ void dfs(int x, int y, bool isReal) {
         if (hasCow[nx][ny]) {
             neighborCount[x][y]++;
             neighborCount[nx][ny]++;
-            if (neighborCount[x][y] == 3) {
-                for (int e=0; e<4; e++)
-                    if (!hasCow[x + dx[e]][y + dy[e]])
-                        dfs(x + dx[e], y + dy[e], false);   // triggers for the one empty spot
-            }
-            if (neighborCount[nx][ny] == 3) {
-                for (int e=0; e<4; e++)
-                    if (!hasCow[nx + dx[e]][ny + dy[e]])
-                        dfs(nx + dx[e], ny + dy[e], false); // triggers for the one empty spot
-            }
+        }
+    }
+    if (neighborCount[x][y] == 3) {
+        for (int e=0; e<4; e++)
+            if (!hasCow[x + dx[e]][y + dy[e]])
+                dfs(x + dx[e], y + dy[e], false);   // triggers for the one empty spot
+    }
+    for (int d=0; d<4; d++) {
+        int nx = x + dx[d], ny = y + dy[d];
+        if (neighborCount[nx][ny] == 3) {
+            for (int e=0; e<4; e++)
+                if (!hasCow[nx + dx[e]][ny + dy[e]])
+                    dfs(nx + dx[e], ny + dy[e], false); // triggers for the one empty spot
         }
     }
 }
